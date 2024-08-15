@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreSubCategoryRequest;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+
 
 class SubCategoryController extends Controller
 {
@@ -17,6 +19,7 @@ class SubCategoryController extends Controller
         $sub_categories = SubCategory::paginate(12);
 
         return view('admin.subcategories.index', compact('sub_categories'));
+
     }
 
     /**
@@ -30,7 +33,7 @@ class SubCategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreSubCategoryRequest $request)
     {
         if ($request->hasFile('image')) {
             $path = $request->file('image')->store('public/subcategories');
@@ -42,40 +45,49 @@ class SubCategoryController extends Controller
                 'image'=> $path
             ]);
 
-            return redirect()->route('categories.index')->with('message', 'Kategorija je kreirana');
+            return redirect()->route('subcategories.index')->with('message', 'Potkategorija je kreirana');
         }
         dd('no image');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+
+    public function edit($id)
     {
-        //
+        $sub_category = SubCategory::find($id);
+        return view('admin.subcategories.edit', compact('sub_category'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+
+    public function update(Request $request, $id)
     {
-        //
+        $sub_category = SubCategory::find($id);
+
+        if($request->hasFile('image')){
+            $path = $request->file('image')->store('public/subcategories');
+
+            $sub_category->update([
+                'name' => $request->name,
+                'slug' => Str::slug($request->name),
+                'category_id' => $request->category_id,
+                'image' => $path
+            ]);
+            return redirect()->route('subcategories.index')->with('message', 'Potkategorija ažurirana novom slikom');
+
+        }else {
+            $sub_category->update([
+                'name' => $request->name,
+                'slug' => Str::slug($request->name),
+                'category_id' => $request->category_id,
+            ]);
+            return redirect()->route('subcategories.index')->with('message', 'Potkategorija ažurirana');
+        }
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function destroy($id)
     {
-        //
-    }
+        $sub_category = SubCategory::find($id);
+        $sub_category->delete();
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return redirect()->route('subcategories.index')->with('message', 'Potkategorija obrisana');
     }
 }

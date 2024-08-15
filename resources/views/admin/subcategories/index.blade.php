@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         @if (session('message'))
-            <div class="bg-indigo-600 text-gray-200 m-2 p-2 rounded-md">
+            <div class="bg-indigo-600 text-gray-100 m-2 p-2 text-lg text-center">
                 {{ session('message') }}
             </div>
         @endif
@@ -61,13 +61,13 @@
                                             </div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            <a href="{{ route('categories.edit', $category->id) }}" class="text-indigo-600 hover:text-indigo-900">
+                                            <a href="{{ route('subcategories.edit', $category->id) }}" class="text-indigo-600 hover:text-indigo-900">
                                                 Uredi
                                             </a>
-                                            <form method="POST" action="{{ route('categories.destroy', $category->id) }}" x-data>
+                                            <form method="POST" action="{{ route('subcategories.destroy', $category->id) }}" x-data>
                                                 @csrf
                                                 @method('DELETE')
-                                                <a class="text-red-500 hover:text-red-900" @click.prevent="$root.submit();">
+                                                <a class="text-red-500 hover:text-red-900 cursor-pointer" @click.prevent="$root.submit();">
                                                     Obriši
                                                 </a>
                                             </form>
