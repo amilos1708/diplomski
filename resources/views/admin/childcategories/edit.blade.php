@@ -11,7 +11,7 @@
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="py-2 align-middle inline-block w-full sm:px-6 lg:px-8">
                     <div class="flex justify-start">
-                        <a href="{{ route('subcategories.index') }}"
+                        <a href="{{ route('childcategories.index') }}"
                             class="py-2 px-4 m-2 bg-blue-600 hover:bg-blue-500 text-black rounded-md">Povratak</a>
                     </div>
                 </div>
@@ -21,11 +21,11 @@
                     <div class="md:grid md:grid-cols-3 md:gap-6">
                         <div class="md:col-span-1">
                             <div class="px-4 sm:px-0">
-                                <h3 class="text-lg font-medium leading-6 text-gray-900">Uredi potkategoriju</h3>
+                                <h3 class="text-lg font-medium leading-6 text-gray-900">Uredi podpotkategoriju</h3>
                             </div>
                         </div>
                         <div class="mt-5 md:mt-0 md:col-span-2">
-                            <form action="{{ route('subcategories.update', $sub_category->id) }}" method="POST"
+                            <form action="{{ route('childcategories.update', $child_category->id) }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
@@ -39,7 +39,7 @@
                                                 <div class="mt-1 flex rounded-md shadow-sm">
                                                     <input type="text" name="name" id="name"
                                                         class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
-                                                        value="{{ $sub_category->name}}">
+                                                        value="{{ $child_category->name}}">
                                                     
                                                 </div>
                                                 @error('name') <span
@@ -50,17 +50,19 @@
                                         <div class="grid grid-cols-3 gap-6">
                                             <div class="col-span-3 sm:col-span-2">
                                                 <label for="name" class="block text-sm font-medium text-gray-700">
-                                                    Kategorija
+                                                    Potkategorija
                                                 </label>
                                                 <div class="mt-1 flex rounded-md shadow-sm">
-                                                    <select name="category_id">
-                                                        @foreach (App\Models\Category::all() as $category)
-                                                            <option value="{{$category->id}}" {{ $category->id == $sub_category->category_id ? 'selected': ''}}>{{$category->name}}</option>
+                                                    <select name="sub_category_id">
+                                                        @foreach (App\Models\SubCategory::all() as $sub_category)
+                                                            <option value="{{$sub_category->id}}" 
+                                                                {{ $sub_category->id == $child_category->sub_category_id ? 'selected': ''}}>
+                                                                {{$sub_category->name}}</option>
                                                         @endforeach
                                                         
                                                     </select>
                                                 </div>
-                                                @error('category_id') <span class="text-red-500">{{$message}}</span>
+                                                @error('sub_category_id') <span class="text-red-500">{{$message}}</span>
                                                     
                                                 @enderror
                                             </div>
@@ -71,7 +73,7 @@
                                                 Slika
                                             </label>
                                             <div class="w-full m-2 p-2">
-                                                <img class="h-32 w-32" src="{{Storage::url($sub_category->image)}}">
+                                                <img class="h-32 w-32" src="{{Storage::url($child_category->image)}}">
                                             </div>
                                             <div class="mt-1 flex items-center">
                                                 <input type="file" id="image" name="image"
