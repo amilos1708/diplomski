@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Države') }}
+            {{ __('Županije') }}
         </h2>
     </x-slot>
 
@@ -14,8 +14,8 @@
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="py-2 align-middle inline-block w-full sm:px-6 lg:px-8">
                     <div class="flex justify-end">
-                        <a href="{{ route('countries.create') }}"
-                            class="py-2 px-4 m-2 bg-blue-600 hover:bg-blue-500 text-black rounded-md">Nova Država
+                        <a href="{{ route('states.create') }}"
+                            class="py-2 px-4 m-2 bg-blue-600 hover:bg-blue-500 text-black rounded-md">Nova županija
                             </a>
                     </div>
                 </div>
@@ -32,11 +32,7 @@
                                     </th>
                                     <th scope="col"
                                         class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Slug
-                                    </th>
-                                    <th scope="col"
-                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Country code
+                                        Država
                                     </th>
                                     <th scope="col" class="relative px-6 py-3">
                                         <span class="sr-only">Uredi</span>
@@ -44,32 +40,32 @@
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
-                                @foreach ($countries as $country)
+                                @foreach ($states as $state)
                                     <tr>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="flex items-center">
-                                                {{ $country->name }}
+                                                {{ $state->name }}
                                             </div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="flex items-center">
-                                                {{ $country->slug }}
+                                                {{ $state->country->name }}
                                             </div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="flex items-center">
-                                                {{ $country->country_code }}
+                                                {{ $state->state_code }}
                                             </div>
                                         </td>
                                         <td class="flex px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            <a href="{{ route('countries.edit', $country->id) }}"
+                                            <a href="{{ route('states.edit', $state->id) }}"
                                                 class="text-indigo-600 hover:text-indigo-900 px-2">Edit</a>
                                             <form method="POST"
-                                                action="{{ route('countries.destroy', $country->id) }}">
+                                                action="{{ route('states.destroy', $state->id) }}">
                                                 @csrf
                                                 @method('DELETE')
                                                 <a class="text-red-500 hover:text-red-900 px-2"
-                                                    href="{{ route('countries.destroy', $country->id) }}"
+                                                    href="{{ route('states.destroy', $state->id) }}"
                                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                                     Obriši
@@ -81,7 +77,7 @@
                             </tbody>
                         </table>
                         <div class="p-2 m-2">
-                            {{ $countries->links() }}
+                            {{ $states->links() }}
                         </div>
                     </div>
                 </div>
