@@ -49,7 +49,7 @@ class ChildCategoryController extends Controller
                 'image' => $path
             ]);
 
-            return redirect()->route('childcategories.index')->with('message', 'Sub Category created.');
+            return redirect()->route('childcategories.index')->with('message', 'Podpotkategorija kreirana.');
             ;
         }
         dd('no image');
@@ -87,7 +87,7 @@ class ChildCategoryController extends Controller
                 'category_id' => $request->category_id,
                 'image' => $path
             ]);
-            return redirect()->route('childcategories.index')->with('message', 'Sub category updated with image.');
+            return redirect()->route('childcategories.index')->with('message', 'Podpotkategorija uređena slikom.');
             ;
         } else {
             $child_category->update([
@@ -95,7 +95,7 @@ class ChildCategoryController extends Controller
                 'slug' => Str::slug($request->name),
                 'category_id' => $request->category_id,
             ]);
-            return redirect()->route('childcategories.index')->with('message', 'Sub Category updated.');
+            return redirect()->route('childcategories.index')->with('message', 'Podpotkategorija uređena.');
             ;
         }
     }
