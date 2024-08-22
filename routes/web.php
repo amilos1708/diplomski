@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ChildCategoryController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\StateController;
+use App\Http\Controllers\ListingController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -29,3 +30,5 @@ Route::resource('countries', CountryController::class);
 Route::resource('states', StateController::class);
 Route::resource('cities', CityController::class);
 
+Route::get('listings/create', [ListingController::class, 'create'])->name('listings.create');
+Route::post('listings/store', [ListingController::class, 'store'])->name('listings.store');
