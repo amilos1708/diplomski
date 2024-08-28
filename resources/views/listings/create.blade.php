@@ -6,7 +6,7 @@
     </x-slot>
 
     <div class="container mx-auto">
-        <!-- This example requires Tailwind CSS v2.0+ -->
+
         <div class="flex flex-col">
             <div class="overflow-hidden sm:rounded-lg bg-gray-200 m-2 p-2">
                 <div class="mt-5 md:mt-0 md:col-span-2">

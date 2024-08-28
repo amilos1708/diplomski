@@ -43,8 +43,8 @@ class ListingController extends Controller
         Listing::create([
             'user_id'=> auth()->user()->id,
             'category_id'=> $request->category_id,
-            'subcategory_id'=> $request->subcategory_id,
-            'childcategory_id'=> $request->childcategory_id,
+            'sub_category_id'=> $request->sub_category_id,
+            'child_category_id'=> $request->child_category_id,
             'title'=> $request->title,
             'slug'=> Str::slug($request->title),
             'description'=> $request->description,

@@ -3,7 +3,7 @@
         <label for="category_id" class="block text-sm font-medium text-gray-700">
             Kategorija
         </label>
-        <select wire:model.live="selectedCategory" name="category_id"
+        <select required wire:model.live="selectedCategory" name="category_id"
             class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
             <option value="">Odaberi kategoriju</option>
             @foreach ($categories as $category)
@@ -19,7 +19,7 @@
             <label for="sub_category_id" class="block text-sm font-medium text-gray-700">
                 Potkategorija
             </label>
-            <select wire:model.live="selectedSubCategory" name="sub_category_id"
+            <select required wire:model.live="selectedSubCategory" name="sub_category_id"
                 class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                 <option value="">Odaberi potkategoriju</option>
                 @foreach ($subCategories as $category)
@@ -38,7 +38,7 @@
             </label>
             <select name="child_category_id"
                 class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                <option value="">Odaberi podpotkategoriju</option>
+                <option value="" >Odaberi podpotkategoriju</option>
                 @foreach ($childCategories as $category)
                     <option value="{{ $category->id }}">
                         {{ $category->name }}</option>

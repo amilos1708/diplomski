@@ -16,7 +16,7 @@
                         @method('PUT')
                         <div class="shadow sm:rounded-md sm:overflow-hidden">
                             <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
-                                @livewire('depended-category')
+                                @livewire('dependet-edit-category', ['category' => $listing->category_id, 'subCategory'=> $listing->sub_category_id, 'childCategory' => $listing->child_category_id])
                                 <div class="grid grid-cols-6 gap-6">
 
                                     <div class="col-span-6">
@@ -129,7 +129,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                @livewire('depended-country')
+                                @livewire('dependet-edit-country', ['country' => $listing->country_id, 'state' =>$listing->state_id, 'city' => $listing->city_id])
                                 @livewire('image-preview')
                                 <div class="px-4 py-3 bg-gray-50 sm:px-6">
                                     <button type="submit"

@@ -22,6 +22,10 @@ class DependedCountry extends Component
 
     public function updatedSelectedCountry($country)
     {
+        $this->states = [];
+        $this->cities = null;
+        $this->selectedState = null;
+
         if (!is_null($this->selectedCountry)) {
             $this->states = State::where('country_id', $country)->get();
         }
