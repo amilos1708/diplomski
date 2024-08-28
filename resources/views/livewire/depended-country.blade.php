@@ -36,7 +36,7 @@
             <label for="city_id" class="block text-sm font-medium text-gray-700">
                 Grad
             </label>
-            <select id="city_id" required wire:model.live="selectedCity" name="city_id"
+            <select required id="city_id" required wire:model.live="selectedCity" name="city_id"
                 class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                 <option value="">Odaberi grad</option>
                 @foreach ($cities as $city)

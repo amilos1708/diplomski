@@ -9,7 +9,7 @@
 
     <div class="container mx-auto">
         @if (session('message'))
-            <div class="bg-indigo-600 text-gray-200 m-2 p-2 rounded-md">
+            <div class="bg-indigo-600 text-gray-200 m-2 p-2 text.lg text-center rounded-md">
                 {{ session('message') }}
             </div>
         @endif
