@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-admin-layout>
     <x-slot name="header">
         
 
@@ -17,7 +17,7 @@
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:mx-8">
                 <div class="py-2 align-middle inline-block w-full sm:px-6 lg:px-8">
                     <div class="flex justify-end">
-                        <a href="{{ route('childcategories.create') }}" class="py-2 px-4 m-2 bg-blue-600 hover:bg-blue-500 text-black rounded-md">
+                        <a href="{{ route('admin.childcategories.create') }}" class="py-2 px-4 m-2 bg-blue-600 hover:bg-blue-500 text-black rounded-md">
                             Nova podpotkategorija
                         </a>
                     </div>
@@ -62,10 +62,10 @@
                                             </div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            <a href="{{ route('childcategories.edit', $category->id) }}" class="text-indigo-600 hover:text-indigo-900">
+                                            <a href="{{ route('admin.childcategories.edit', $category->id) }}" class="text-indigo-600 hover:text-indigo-900">
                                                 Uredi
                                             </a>
-                                            <form method="POST" action="{{ route('childcategories.destroy', $category->id) }}" x-data>
+                                            <form method="POST" action="{{ route('admin.childcategories.destroy', $category->id) }}" x-data>
                                                 @csrf
                                                 @method('DELETE')
                                                 <a class="text-red-500 hover:text-red-900 cursor-pointer" @click.prevent="$root.submit();">

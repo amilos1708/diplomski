@@ -7,16 +7,15 @@
       <span class="ml-3 text-xl">360glasnik</span>
     </a>
     <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-      <a class="mr-5 hover:text-gray-900">Naslovna</a>
-      <a class="mr-5 hover:text-gray-900">Svi oglasi</a>
-      <a class="mr-5 hover:text-gray-900">Prodavači</a>
+      <a class="mr-5 hover:text-gray-900" href="/">Naslovna</a>
+      <a class="mr-5 hover:text-gray-900" href="{{route('all-listings')}}">Svi oglasi</a>
       <a class="mr-5 hover:text-gray-900">Kontakt</a>
       @guest
         <a href="{{route('login')}}"class="mr-5 hover:text-gray-900">Prijava</a>
         <a href="{{route('register')}}"class="mr-5 hover:text-gray-900">Registracija</a>
       @endguest
       @auth
-        <a class="mr-5 hover:text-gray-900">{{auth()->user()->name}}</a>
+        <a class="mr-5 hover:text-gray-900" href="{{route('dashboard')}}">{{auth()->user()->name}}</a>
       @endauth
     </nav>
     <button class="inline-flex items-center bg-blue-600 border-0 py-1 px-3 focus:outline-none hover:bg-blue-500 rounded text-base text-black font-semibold mt-4 md:mt-0">Objavi oglas

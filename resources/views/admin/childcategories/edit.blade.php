@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-admin-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Uredi potkategoriju') }}
@@ -11,7 +11,7 @@
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="py-2 align-middle inline-block w-full sm:px-6 lg:px-8">
                     <div class="flex justify-start">
-                        <a href="{{ route('childcategories.index') }}"
+                        <a href="{{ route('admin.childcategories.index') }}"
                             class="py-2 px-4 m-2 bg-blue-600 hover:bg-blue-500 text-black rounded-md">Povratak</a>
                     </div>
                 </div>
@@ -25,7 +25,7 @@
                             </div>
                         </div>
                         <div class="mt-5 md:mt-0 md:col-span-2">
-                            <form action="{{ route('childcategories.update', $child_category->id) }}" method="POST"
+                            <form action="{{ route('admin.childcategories.update', $child_category->id) }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')

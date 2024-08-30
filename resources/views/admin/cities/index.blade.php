@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-admin-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Gradovi') }}
@@ -14,7 +14,7 @@
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="py-2 align-middle inline-block w-full sm:px-6 lg:px-8">
                     <div class="flex justify-end">
-                        <a href="{{ route('cities.create') }}"
+                        <a href="{{ route('admin.cities.create') }}"
                             class="py-2 px-4 m-2 bg-blue-600 hover:bg-blue-500 text-black rounded-md"">Novi
                             Grad</a>
                     </div>
@@ -53,14 +53,14 @@
                                             </div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            <a href="{{ route('cities.edit', $city->id) }}"
+                                            <a href="{{ route('admin.cities.edit', $city->id) }}"
                                                 class="text-indigo-600 hover:text-indigo-900">Edit</a>
                                             <form method="POST"
-                                                action="{{ route('cities.destroy', $city->id) }}">
+                                                action="{{ route('admin.cities.destroy', $city->id) }}">
                                                 @csrf
                                                 @method('DELETE')
                                                 <a class="text-red-500 hover:text-red-900"
-                                                    href="{{ route('cities.destroy', $city->id) }}" onclick="event.preventDefault();
+                                                    href="{{ route('admin.cities.destroy', $city->id) }}" onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                                     Obriši
                                                 </a>

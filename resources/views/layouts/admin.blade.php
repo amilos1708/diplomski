@@ -23,7 +23,7 @@
     <div class="flex-col w-full md:flex md:flex-row md:min-h-screen">
         <div @click.away="open = false" class="flex flex-col flex-shrink-0 w-full text-gray-700 bg-white md:w-64 dark-mode:text-gray-200 dark-mode:bg-gray-800" x-data="{ open: false }">
             <div class="flex flex-row items-center justify-between flex-shrink-0 px-8 py-4">
-                <a href="#" class="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">360glasnik upravljačka ploča</a>
+                <a href="#" class="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">360glasnik Admin</a>
                 <button class="rounded-lg md:hidden focus:outline-none focus:shadow-outline" @click="open = !open">
                     <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
                         <path x-show="!open" fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z" clip-rule="evenodd"></path>
@@ -33,14 +33,14 @@
             </div>
             <nav :class="{'block': open, 'hidden': !open}" class="flex-grow px-4 pb-4 md:block md:pb-0 md:overflow-y-auto">
                 <x-app-link class="bg-blue-600 hover:bg-blue-500" href="{{route('listings.create')}}" :active="request()->routeIs('listings.create')">Novi oglas</x-app-link>
-                <x-app-link class="bg-blue-600 hover:bg-blue-500" href="{{route('listings.index')}}" :active="request()->routeIs('listings.index')">Moji oglasi</x-app-link>
+                <x-app-link class="bg-blue-600 hover:bg-blue-500" href="{{route('admin.listings.index')}}" :active="request()->routeIs('admin.listings.index')">Svi oglasi</x-app-link>
                 <x-app-link href="{{route('dashboard')}}" :active="request()->routeIs('dashboard')">Dashboard</x-app-link>
-
-
-                @role('admin')
-                    <x-app-link href="{{route('admin.index')}}" :active="request()->routeIs('admin.index')">Admin</x-app-link>
-                    
-                @endrole
+                <x-app-link href="{{route('admin.categories.index')}}" :active="request()->routeIs('admin.categories.index')">Kategorije</x-app-link>
+                <x-app-link href="{{route('admin.subcategories.index')}}" :active="request()->routeIs('admin.subcategories.index')">Potkategorije</x-app-link>
+                <x-app-link href="{{route('admin.childcategories.index')}}" :active="request()->routeIs('admin.childcategories.index')">Podpotkategorije</x-app-link>
+                <x-app-link href="{{route('admin.countries.index')}}" :active="request()->routeIs('admin.countires.index')">Države</x-app-link>
+                <x-app-link href="{{route('admin.states.index')}}" :active="request()->routeIs('admin.states.index')">Županije</x-app-link>
+                <x-app-link href="{{route('admin.cities.index')}}" :active="request()->routeIs('admin.cities.index')">Gradovi</x-app-link>
 
                 <div @click.away="open = false" class="relative" x-data="{ open: false }">
                     <button @click="open = !open" class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:focus:bg-gray-600 dark-mode:hover:bg-gray-600 md:block hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">

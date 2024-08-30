@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-admin-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Nova podpotkategorija') }}
@@ -10,7 +10,7 @@
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="py-2 align-middle inline-block w-full sm:px-6 lg:px-8">
                     <div class="flex justify-start">
-                        <a href="{{ route('childcategories.index') }}"
+                        <a href="{{ route('admin.childcategories.index') }}"
                             class="py-2 px-4 m-2 bg-blue-600 hover:bg-blue-500 text-black rounded-md">Povratak</a>
                     </div>
                 </div>
@@ -24,7 +24,7 @@
                             </div>
                         </div>
                         <div class="mt-5 md:mt-0 md:col-span-2">
-                            <form action="{{ route('childcategories.store') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('admin.childcategories.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="shadow sm:rounded-md sm:overflow-hidden">
                                     <div class="px-4 py-5 bg-white space-y-6 sm:p-6">

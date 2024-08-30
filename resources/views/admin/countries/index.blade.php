@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-admin-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Države') }}
@@ -14,7 +14,7 @@
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="py-2 align-middle inline-block w-full sm:px-6 lg:px-8">
                     <div class="flex justify-end">
-                        <a href="{{ route('countries.create') }}"
+                        <a href="{{ route('admin.countries.create') }}"
                             class="py-2 px-4 m-2 bg-blue-600 hover:bg-blue-500 text-black rounded-md">Nova Država
                             </a>
                     </div>
@@ -62,14 +62,14 @@
                                             </div>
                                         </td>
                                         <td class="flex px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            <a href="{{ route('countries.edit', $country->id) }}"
+                                            <a href="{{ route('admin.countries.edit', $country->id) }}"
                                                 class="text-indigo-600 hover:text-indigo-900 px-2">Edit</a>
                                             <form method="POST"
-                                                action="{{ route('countries.destroy', $country->id) }}">
+                                                action="{{ route('admin.countries.destroy', $country->id) }}">
                                                 @csrf
                                                 @method('DELETE')
                                                 <a class="text-red-500 hover:text-red-900 px-2"
-                                                    href="{{ route('countries.destroy', $country->id) }}"
+                                                    href="{{ route('admin.countries.destroy', $country->id) }}"
                                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                                     Obriši
