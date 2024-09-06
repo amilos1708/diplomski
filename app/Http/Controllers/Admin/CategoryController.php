@@ -33,7 +33,7 @@ class CategoryController extends Controller
                 'image'=> $path
             ]);
 
-            return redirect()->route('categories.index')->with('message', 'Kategorija je kreirana');
+            return redirect()->route('admin.categories.index')->with('message', 'Kategorija je kreirana');
         }
         dd('no image');
         
@@ -54,14 +54,14 @@ class CategoryController extends Controller
                 'slug' => Str::slug($request->name),
                 'image' => $path
             ]);
-            return redirect()->route('categories.index')->with('message', 'Kategorija ažurirana novom slikom');
+            return redirect()->route('admin.categories.index')->with('message', 'Kategorija ažurirana novom slikom');
 
         }else {
             $category->update([
                 'name' => $request->name,
                 'slug' => Str::slug($request->name)
             ]);
-            return redirect()->route('categories.index')->with('message', 'Kategorija ažurirana');
+            return redirect()->route('admin.categories.index')->with('message', 'Kategorija ažurirana');
         }
     }
 
@@ -69,6 +69,29 @@ class CategoryController extends Controller
     {
         $category->delete();
 
-        return redirect()->route('categories.index')->with('message', 'Kategorija obrisana');
+        return redirect()->route('admin.categories.index')->with('message', 'Kategorija obrisana');
+    }
+
+    public function add_sub(Category $category)
+    {
+        return view('admin.categories.add_sub', compact('category'));
+    }
+
+    public function add_sub_store(Request $request, Category $category)
+    {
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('public/subcategories');
+
+            $category->sub_categories()->create([
+                'name' => $request->name,
+                'slug' => Str::slug($request->name),
+                'category_id' => $category->id,
+                'image' => $path
+            ]);
+
+            return redirect()->route('admin.categories.index')->with('message', 'Potkategorija je kreirana.');
+            ;
+        }
+        dd('Nema sliku');
     }
 }

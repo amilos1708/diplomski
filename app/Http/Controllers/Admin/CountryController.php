@@ -68,4 +68,17 @@ class CountryController extends Controller
 
         return redirect()->route('countries.index')->with('message', 'Država izbrisana.');
     }
+
+    public function add_state(Country $country)
+    {
+        return view('admin.countries.add_state', compact('country'));
+    }
+
+    public function add_state_store(Country $country)
+    {
+        $country->states()->create([
+           'name' => request()->name
+       ]);
+        return redirect()->route('admin.countries.index')->with('message', 'Županija kreirana.');
+    }
 }

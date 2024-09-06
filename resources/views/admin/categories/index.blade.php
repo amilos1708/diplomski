@@ -61,14 +61,17 @@
                                                     <img class="h-12 w-12 rounded-md" src="{{ Storage::url($category->image) }}">
                                                 </div>
                                             </td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                <a href="{{ route('admin.categories.edit', $category->id) }}" class="text-indigo-600 hover:text-indigo-900">
+                                            <td class="flex px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                                <a href="{{ route('admin.add_sub', $category->id) }}" class="px-2 text-indigo-600 hover:text-indigo-900">
+                                                    Dodaj potkategoriju
+                                                </a>
+                                                <a href="{{ route('admin.categories.edit', $category->id) }}" class="px-2 text-indigo-600 hover:text-indigo-900">
                                                     Uredi
                                                 </a>
                                                 <form method="POST" action="{{ route('admin.categories.destroy', $category->id) }}" x-data>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <a class="text-red-500 hover:text-red-900" @click.prevent="$root.submit();">
+                                                    <a class="px-2 text-red-500 hover:text-red-900" @click.prevent="$root.submit();">
                                                         Obriši
                                                     </a>
                                                 </form>

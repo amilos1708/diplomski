@@ -62,6 +62,8 @@
                                             </div>
                                         </td>
                                         <td class="flex px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                            <a href="{{ route('admin.add_state', $country->id) }}"
+                                                class="text-indigo-600 hover:text-indigo-900 px-2">Dodaj županiju</a>
                                             <a href="{{ route('admin.countries.edit', $country->id) }}"
                                                 class="text-indigo-600 hover:text-indigo-900 px-2">Edit</a>
                                             <form method="POST"

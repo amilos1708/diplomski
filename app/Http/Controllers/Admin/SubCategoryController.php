@@ -71,7 +71,7 @@ class SubCategoryController extends Controller
                 'category_id' => $request->category_id,
                 'image' => $path
             ]);
-            return redirect()->route('subcategories.index')->with('message', 'Potkategorija ažurirana novom slikom');
+            return redirect()->route('admin.subcategories.index')->with('message', 'Potkategorija ažurirana novom slikom');
 
         }else {
             $sub_category->update([
@@ -79,7 +79,7 @@ class SubCategoryController extends Controller
                 'slug' => Str::slug($request->name),
                 'category_id' => $request->category_id,
             ]);
-            return redirect()->route('subcategories.index')->with('message', 'Potkategorija ažurirana');
+            return redirect()->route('admin.subcategories.index')->with('message', 'Potkategorija ažurirana');
         }
     }
 
@@ -88,6 +88,6 @@ class SubCategoryController extends Controller
         $sub_category = SubCategory::find($id);
         $sub_category->delete();
 
-        return redirect()->route('subcategories.index')->with('message', 'Potkategorija obrisana');
+        return redirect()->route('admin.subcategories.index')->with('message', 'Potkategorija obrisana');
     }
 }

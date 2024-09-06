@@ -65,7 +65,7 @@ class StateController extends Controller
     {
         $state->update($request->validated());
 
-        return redirect()->route('states.index')->with('message', 'Županija ažurirana.');
+        return redirect()->route('admin.states.index')->with('message', 'Županija ažurirana.');
     }
 
     /**
@@ -75,6 +75,6 @@ class StateController extends Controller
     {
         $state->delete();
 
-        return redirect()->route('states.index')->with('message', 'Županija izbrisana.');
+        return redirect()->route('admin.states.index')->with('message', 'Županija izbrisana.');
     }
 }
